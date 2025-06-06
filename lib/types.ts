@@ -107,6 +107,7 @@ export interface Plant {
   plantingDate: string;
   wateringFrequency: number; // days
   careTips: string;
+  quantity: number; // number of plants of this type
 }
 
 // Form data types for the wizard
