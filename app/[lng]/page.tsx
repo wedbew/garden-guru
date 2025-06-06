@@ -22,6 +22,7 @@ import {
   Quote,
 } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 import LanguageSwitcher from '@/components/language-switcher'
 import ThemeSwitcher from '@/components/theme-switcher'
 import { use } from 'react'
@@ -92,13 +93,15 @@ export default function GardenGuruLanding({ params }: { params: Promise<{ lng: s
                     Start Your Free Trial
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="border-green-600 text-green-600 hover:bg-green-50 dark:border-green-400 dark:text-green-400 dark:hover:bg-green-900 px-8 py-3 text-lg"
-                  >
-                    See a Demo
-                  </Button>
+                  <Link href="/app">
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="border-green-600 text-green-600 hover:bg-green-50 dark:border-green-400 dark:text-green-400 dark:hover:bg-green-900 px-8 py-3 text-lg"
+                    >
+                      See a Demo
+                    </Button>
+                  </Link>
                 </div>
 
                 <div className="flex items-center space-x-6 text-sm text-green-600 dark:text-green-400">
