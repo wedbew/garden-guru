@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "title": "Propibay",
+    "description": "Discover your perfect land with Propibay. Explore tailored options, compare properties, and find the ideal spot for your dreams. Propibay simplifies your land search with precision and ease."
+  },
+  "languages": {
+    "en": "English",
+    "pl": "Polish"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "hello-world": {
+    "title": "Hello, World",
+    "description": "Welcome to my minimalist Next.js application",
+    "get-started": "Get Started"
+  }
+}

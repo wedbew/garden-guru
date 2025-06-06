@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "title": "GardenGuru",
+    "description": "Odkryj idealną działkę z Garden Guru. Przeglądaj dopasowane opcje, porównuj nieruchomości i znajdź idealne miejsce na realizację swoich marzeń. Propibay ułatwia wyszukiwanie działek z precyzją i prostotą."
+  },
+  "languages": {
+    "en": "Angielski",
+    "pl": "Polski"
+  },
+  "theme": {
+    "light": "Jasny",
+    "dark": "Ciemny",
+    "system": "Systemowy"
+  },
+  "hello-world": {
+    "title": "Witaj, Świecie",
+    "description": "Witaj w mojej minimalistycznej aplikacji Next.js",
+    "get-started": "Rozpocznij"
+  }
+}
