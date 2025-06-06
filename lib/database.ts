@@ -1,11 +1,11 @@
 import { MongoClient, Db, Collection, ObjectId, Document } from 'mongodb';
-import { Plant, InitialPlantFormData } from './types';
+import { ComplexPlant, InitialPlantFormData } from './types';
 
 const MONGODB_URI = 'mongodb+srv://marcinbawolski:6UsdBSuMIegkui99@gardenguru.fscb82g.mongodb.net/';
 const DATABASE_NAME = 'garden-guru';
 
 // MongoDB document types
-interface PlantDocument extends Omit<Plant, 'id'> {
+interface PlantDocument extends Omit<ComplexPlant, 'id'> {
   _id?: ObjectId;
 }
 
@@ -41,7 +41,7 @@ class DatabaseService {
   }
 
   // Plant operations
-  async createPlant(plantData: Partial<Plant>): Promise<string> {
+  async createPlant(plantData: Partial<ComplexPlant>): Promise<string> {
     const plantsCollection = this.getCollection<PlantDocument>('plants');
     
     const plant: PlantDocument = {
@@ -70,7 +70,7 @@ class DatabaseService {
   }
 
   async createPlantFromInitialData(formData: InitialPlantFormData, userId?: string): Promise<string> {
-    const plantData: Partial<Plant> = {
+    const plantData: Partial<ComplexPlant> = {
       area_id: userId || new ObjectId().toString(),
       identity: {
         user_defined_name: formData.user_defined_name,
@@ -106,7 +106,7 @@ class DatabaseService {
     return this.createPlant(plantData);
   }
 
-  async getPlant(plantId: string): Promise<Plant | null> {
+  async getPlant(plantId: string): Promise<ComplexPlant | null> {
     const plantsCollection = this.getCollection<PlantDocument>('plants');
     const plant = await plantsCollection.findOne({ _id: new ObjectId(plantId) });
     
@@ -120,7 +120,7 @@ class DatabaseService {
     return null;
   }
 
-  async getPlantsByUser(userId: string): Promise<Plant[]> {
+  async getPlantsByUser(userId: string): Promise<ComplexPlant[]> {
     const plantsCollection = this.getCollection<PlantDocument>('plants');
     const plants = await plantsCollection.find({ area_id: userId }).toArray();
     
@@ -130,7 +130,7 @@ class DatabaseService {
     }));
   }
 
-  async updatePlant(plantId: string, updateData: Partial<Plant>): Promise<boolean> {
+  async updatePlant(plantId: string, updateData: Partial<ComplexPlant>): Promise<boolean> {
     const plantsCollection = this.getCollection<PlantDocument>('plants');
     const result = await plantsCollection.updateOne(
       { _id: new ObjectId(plantId) },
@@ -148,7 +148,7 @@ class DatabaseService {
   }
 
   // Journal operations
-  async addJournalEntry(plantId: string, entry: Omit<Plant['journal']['entries'][0], 'entry_id'>): Promise<string> {
+  async addJournalEntry(plantId: string, entry: Omit<NonNullable<ComplexPlant['journal']>['entries'][0], 'entry_id'>): Promise<string> {
     const plantsCollection = this.getCollection<PlantDocument>('plants');
     const entryId = new ObjectId().toString();
     
@@ -165,7 +165,7 @@ class DatabaseService {
     return entryId;
   }
 
-  async updatePlantStatus(plantId: string, status: Plant['journal']['current_status']): Promise<boolean> {
+  async updatePlantStatus(plantId: string, status: NonNullable<ComplexPlant['journal']>['current_status']): Promise<boolean> {
     const plantsCollection = this.getCollection<PlantDocument>('plants');
     const result = await plantsCollection.updateOne(
       { _id: new ObjectId(plantId) },
@@ -176,7 +176,7 @@ class DatabaseService {
   }
 
   // Health assessment operations
-  async addHealthAssessment(plantId: string, assessment: Omit<Plant['health']['assessments'][0], 'assessment_id'>): Promise<string> {
+  async addHealthAssessment(plantId: string, assessment: Omit<NonNullable<ComplexPlant['health']>['assessments'][0], 'assessment_id'>): Promise<string> {
     const plantsCollection = this.getCollection<PlantDocument>('plants');
     const assessmentId = new ObjectId().toString();
     
@@ -194,7 +194,7 @@ class DatabaseService {
   }
 
   // Search operations
-  async searchPlants(query: string, userId?: string): Promise<Plant[]> {
+  async searchPlants(query: string, userId?: string): Promise<ComplexPlant[]> {
     const plantsCollection = this.getCollection<PlantDocument>('plants');
     
     const searchFilter: Record<string, unknown> = {

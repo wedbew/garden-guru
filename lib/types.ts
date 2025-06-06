@@ -87,14 +87,26 @@ export interface PlantHealth {
   assessments: HealthAssessment[];
 }
 
-export interface Plant {
-  id: string;
-  area_id: string;
+// Complex plant schema for database operations
+export interface ComplexPlant {
+  id?: string;
+  area_id?: string;
   identity: PlantIdentity;
   placement: PlantPlacement;
-  care_profile: CareProfile;
-  journal: PlantJournal;
-  health: PlantHealth;
+  care_profile?: CareProfile;
+  journal?: PlantJournal;
+  health?: PlantHealth;
+}
+
+// Simple plant schema for UI components
+export interface Plant {
+  id: string;
+  name: string;
+  picture: string;
+  type: string;
+  plantingDate: string;
+  wateringFrequency: number; // days
+  careTips: string;
 }
 
 // Form data types for the wizard
@@ -108,4 +120,15 @@ export interface InitialPlantFormData {
     is_self_watering: boolean;
   };
   photo?: File;
-} 
+}
+
+export type Task = {
+  id: string;
+  taskName: string;
+  completionDate: string | null;
+  plantId: string;
+  dueDate: string;
+  taskType: "watering" | "fertilizing" | "pruning" | "repotting" | "other";
+};
+
+export type ViewType = "plants" | "daily-tasks" | "task-history"; 
