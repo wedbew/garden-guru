@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Plant, Task } from '@/lib/types'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Calendar, CheckCircle, Droplets, AlertTriangle, Leaf, Sparkles, Loader2, Plus } from 'lucide-react'
+import { CheckCircle, Droplets, AlertTriangle, Leaf, Sparkles, Loader2, Plus } from 'lucide-react'
 
 interface DailyTasksProps {
   plants: Plant[]
@@ -33,8 +33,6 @@ export default function DailyTasks({ plants, tasks, setTasks, gardenLocation }: 
   const upcomingTasks = tasks.filter(
     task => task.completionDate === null && task.dueDate > today
   )
-  
-  const completedTasks = tasks.filter(task => task.completionDate !== null)
 
   const generateTasks = () => {
     const newTasks: Task[] = []
