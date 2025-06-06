@@ -130,6 +130,11 @@ export type Task = {
   plantId: string;
   dueDate: string;
   taskType: "watering" | "fertilizing" | "pruning" | "repotting" | "other";
+  priority?: 'low' | 'medium' | 'high' | 'urgent';
+  description?: string;
+  estimatedTime?: string;
+  tools?: string[];
+  tips?: string[];
 };
 
 export type ViewType = "plants" | "daily-tasks" | "task-history"; 
