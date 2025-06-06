@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Button } from '@/components/ui/button';
 import { Camera, Upload, X } from 'lucide-react';
 import { InitialPlantFormData, PlacementType, ContainerUnit } from '@/lib/types';
+import Image from 'next/image';
 
 interface InitialPlantStepProps {
   onNext: (data: InitialPlantFormData) => void;
@@ -31,7 +32,7 @@ export default function InitialPlantStep({ onNext, initialData }: InitialPlantSt
   const [errors, setErrors] = useState<Record<string, string>>({});
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleInputChange = (field: keyof InitialPlantFormData, value: any) => {
+  const handleInputChange = (field: keyof InitialPlantFormData, value: string | PlacementType | File | undefined) => {
     setFormData(prev => ({
       ...prev,
       [field]: value,
@@ -46,7 +47,7 @@ export default function InitialPlantStep({ onNext, initialData }: InitialPlantSt
     }
   };
 
-  const handleContainerDetailChange = (field: keyof NonNullable<InitialPlantFormData['container_details']>, value: any) => {
+  const handleContainerDetailChange = (field: keyof NonNullable<InitialPlantFormData['container_details']>, value: string | number | boolean | ContainerUnit) => {
     setFormData(prev => ({
       ...prev,
       container_details: {
@@ -138,7 +139,7 @@ export default function InitialPlantStep({ onNext, initialData }: InitialPlantSt
       <CardHeader>
         <CardTitle className="text-2xl font-bold text-center">Add Your First Plant</CardTitle>
         <CardDescription className="text-center">
-          Let's start by gathering some basic information about your plant. This will help us provide personalized care recommendations.
+          Let&apos;s start by gathering some basic information about your plant. This will help us provide personalized care recommendations.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -178,9 +179,11 @@ export default function InitialPlantStep({ onNext, initialData }: InitialPlantSt
             
             {photoPreview ? (
               <div className="relative">
-                <img
+                <Image
                   src={photoPreview}
                   alt="Plant preview"
+                  width={400}
+                  height={192}
                   className="w-full h-48 object-cover rounded-lg border"
                 />
                 <Button

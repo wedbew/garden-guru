@@ -82,7 +82,7 @@ export default function WizardPage() {
               <Loader2 className="h-8 w-8 animate-spin mb-4" />
               <h2 className="text-xl font-semibold mb-2">Creating Your Plant...</h2>
               <p className="text-muted-foreground text-center">
-                We're saving your plant information and analyzing the photo if provided.
+                We&apos;re saving your plant information and analyzing the photo if provided.
               </p>
             </CardContent>
           </Card>
@@ -163,7 +163,7 @@ export default function WizardPage() {
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold mb-2">Garden Guru Plant Wizard</h1>
           <p className="text-muted-foreground">
-            Welcome to your plant journey! Let's add your first plant.
+            Welcome to your plant journey! Let&apos;s add your first plant.
           </p>
         </div>
 

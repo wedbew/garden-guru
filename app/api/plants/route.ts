@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { database, ensureDbConnection } from '@/lib/database';
 import { plantAPI } from '@/lib/plant-api';
-import { InitialPlantFormData } from '@/lib/types';
+import { InitialPlantFormData, PlacementType, ContainerUnit } from '@/lib/types';
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
     // Extract form data
     const plantData: InitialPlantFormData = {
       user_defined_name: formData.get('user_defined_name') as string,
-      placement_type: formData.get('placement_type') as any,
+      placement_type: formData.get('placement_type') as PlacementType,
       photo: formData.get('photo') as File | null || undefined,
     };
 
@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
       plantData.container_details = {
         material: formData.get('container_material') as string,
         volume: parseFloat(formData.get('container_volume') as string),
-        unit: formData.get('container_unit') as any,
+        unit: formData.get('container_unit') as ContainerUnit,
         is_self_watering: formData.get('is_self_watering') === 'true',
       };
     }

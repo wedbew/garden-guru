@@ -13,7 +13,6 @@ import {
   ArrowRight,
   Sparkles,
   Users,
-  Target,
   Zap
 } from 'lucide-react';
 import Link from 'next/link';

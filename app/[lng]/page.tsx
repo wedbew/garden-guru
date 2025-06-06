@@ -22,14 +22,12 @@ import {
   Quote,
 } from "lucide-react"
 import Image from "next/image"
-import { useTranslation } from '@/app/i18n/client'
 import LanguageSwitcher from '@/components/language-switcher'
 import ThemeSwitcher from '@/components/theme-switcher'
 import { use } from 'react'
 
 export default function GardenGuruLanding({ params }: { params: Promise<{ lng: string }> }) {
   const { lng } = use(params)
-  const { t } = useTranslation(lng, 'common')
   const [location, setLocation] = useState("")
   const [email, setEmail] = useState("")
 
@@ -85,7 +83,7 @@ export default function GardenGuruLanding({ params }: { params: Promise<{ lng: s
                   </h1>
                   <p className="text-xl text-green-700 dark:text-green-300 leading-relaxed">
                     Get daily, hyper-personalized tasks for your specific plants, right at your fingertips. From watering
-                    schedules to soil health, we've got you covered.
+                    schedules to soil health, we&apos;ve got you covered.
                   </p>
                 </div>
 
@@ -118,7 +116,7 @@ export default function GardenGuruLanding({ params }: { params: Promise<{ lng: s
               <div className="relative">
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/placeholder.svg?height=600&width=500"
+                    src="/garden.png"
                     alt="Thriving indoor garden with various healthy plants"
                     width={500}
                     height={600}
@@ -131,7 +129,7 @@ export default function GardenGuruLanding({ params }: { params: Promise<{ lng: s
                 <div className="absolute -right-4 top-8 bg-white dark:bg-slate-800 rounded-lg shadow-lg p-4 max-w-xs">
                   <div className="flex items-center space-x-2 mb-2">
                     <Droplets className="w-4 h-4 text-blue-500" />
-                    <span className="font-medium text-sm dark:text-slate-200">Today's Task</span>
+                    <span className="font-medium text-sm dark:text-slate-200">Today&apos;s Task</span>
                   </div>
                   <p className="text-sm text-gray-600 dark:text-slate-400">Water your Monstera - soil feels dry!</p>
                 </div>
@@ -254,7 +252,7 @@ export default function GardenGuruLanding({ params }: { params: Promise<{ lng: s
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-green-900 dark:text-green-100 mb-4">
-                The "Magic" Behind the Guru: Personalized for You
+                The &ldquo;Magic&rdquo; Behind the Guru: Personalized for You
               </h2>
               <p className="text-xl text-green-700 dark:text-green-300 max-w-2xl mx-auto">
                 Our smart technology adapts to your unique situation
@@ -266,7 +264,7 @@ export default function GardenGuruLanding({ params }: { params: Promise<{ lng: s
                 <div className="space-y-4">
                   <h3 className="text-2xl font-semibold text-green-900 dark:text-green-100">Location-Based Intelligence</h3>
                   <p className="text-green-700 dark:text-green-300">
-                    Enter your location and we'll factor in your local climate, humidity, and seasonal changes to give you
+                    Enter your location and we&apos;ll factor in your local climate, humidity, and seasonal changes to give you
                     perfectly timed recommendations.
                   </p>
 
@@ -287,7 +285,7 @@ export default function GardenGuruLanding({ params }: { params: Promise<{ lng: s
                     {location && (
                       <div className="text-sm text-green-600 dark:text-green-400 flex items-center space-x-1">
                         <CheckCircle className="w-4 h-4" />
-                        <span>Great! We'll customize everything for {location}</span>
+                        <span>Great! We&apos;ll customize everything for {location}</span>
                       </div>
                     )}
                   </div>
@@ -303,7 +301,7 @@ export default function GardenGuruLanding({ params }: { params: Promise<{ lng: s
               </div>
 
               <div className="space-y-4">
-                <h4 className="text-lg font-semibold text-green-900 dark:text-green-100 mb-4">Today's Personalized Tasks</h4>
+                <h4 className="text-lg font-semibold text-green-900 dark:text-green-100 mb-4">Today&apos;s Personalized Tasks</h4>
 
                 <Card className="border-green-200 dark:border-green-700 dark:bg-slate-800">
                   <CardContent className="p-4">
@@ -395,8 +393,8 @@ export default function GardenGuruLanding({ params }: { params: Promise<{ lng: s
                   </div>
                   <Quote className="w-8 h-8 text-green-200 dark:text-green-700 mb-4" />
                   <p className="text-gray-600 dark:text-slate-400 mb-4">
-                    "I went from killing every plant I touched to having a thriving indoor jungle. Garden-Guru's daily
-                    reminders are a game-changer!"
+                    &ldquo;I went from killing every plant I touched to having a thriving indoor jungle. Garden-Guru&apos;s daily
+                    reminders are a game-changer!&rdquo;
                   </p>
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
@@ -419,8 +417,8 @@ export default function GardenGuruLanding({ params }: { params: Promise<{ lng: s
                   </div>
                   <Quote className="w-8 h-8 text-green-200 dark:text-green-700 mb-4" />
                   <p className="text-gray-600 dark:text-slate-400 mb-4">
-                    "The location-based recommendations are spot on. My plants have never looked better, and I finally
-                    understand what they need!"
+                    &ldquo;The location-based recommendations are spot on. My plants have never looked better, and I finally
+                    understand what they need!&rdquo;
                   </p>
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
@@ -443,8 +441,8 @@ export default function GardenGuruLanding({ params }: { params: Promise<{ lng: s
                   </div>
                   <Quote className="w-8 h-8 text-green-200 dark:text-green-700 mb-4" />
                   <p className="text-gray-600 dark:text-slate-400 mb-4">
-                    "As a busy mom, I love how Garden-Guru keeps my plants healthy without me having to remember
-                    everything. It's like having a plant expert in my pocket!"
+                    &ldquo;As a busy mom, I love how Garden-Guru keeps my plants healthy without me having to remember
+                    everything. It&apos;s like having a plant expert in my pocket!&rdquo;
                   </p>
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
@@ -467,7 +465,7 @@ export default function GardenGuruLanding({ params }: { params: Promise<{ lng: s
             <div className="space-y-8 text-white">
               <h2 className="text-3xl md:text-4xl font-bold">Ready to Transform Your Plant Care?</h2>
               <p className="text-xl text-green-100 dark:text-green-200 max-w-2xl mx-auto">
-                Join thousands of plant parents who've discovered the secret to thriving plants. Your personalized garden
+                Join thousands of plant parents who&apos;ve discovered the secret to thriving plants. Your personalized garden
                 journey starts today.
               </p>
 

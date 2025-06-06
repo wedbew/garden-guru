@@ -31,7 +31,7 @@ export async function generateStaticParams(): Promise<LanguageParams[]> {
 }
 
 export async function generateMetadata(props: {
-  params: Promise<LanguageParams> | LanguageParams;
+  params: Promise<LanguageParams>;
 }): Promise<Metadata> {
   const lng = await resolveLng(props.params);
   const { t } = await getServerTranslation(lng);
@@ -48,7 +48,7 @@ export async function generateMetadata(props: {
 
 export default async function RootLayout(props: {
   children: React.ReactNode;
-  params: Promise<LanguageParams> | LanguageParams;
+  params: Promise<LanguageParams>;
 }) {
   const lng = await resolveLng(props.params);
   // const { t } = await getServerTranslation(lng);

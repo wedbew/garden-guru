@@ -197,7 +197,7 @@ class DatabaseService {
   async searchPlants(query: string, userId?: string): Promise<Plant[]> {
     const plantsCollection = this.getCollection<PlantDocument>('plants');
     
-    const searchFilter: any = {
+    const searchFilter: Record<string, unknown> = {
       $or: [
         { 'identity.user_defined_name': { $regex: query, $options: 'i' } },
         { 'identity.common_name': { $regex: query, $options: 'i' } },
@@ -228,7 +228,7 @@ class DatabaseService {
     return result.insertedId.toString();
   }
 
-  async getGardenAreas(userId: string): Promise<any[]> {
+  async getGardenAreas(userId: string): Promise<Array<Record<string, unknown> & { id: string }>> {
     const areasCollection = this.getCollection('garden_areas');
     const areas = await areasCollection.find({ userId }).toArray();
     
